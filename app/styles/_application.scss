@@ -1,49 +1,57 @@
-html, body {
-  .container {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-  header {
-    background-color: $main-color;
-    border-radius: 0 0 3px 3px;
-    color: white;
-    padding: 30px 20px;
-    h1 {
-      margin: 0;
-      text-align: center;
-      i.fa {
-        font-size: 50px;
-        margin-bottom: 10px;
-      }
-      span.line-through {
-        text-decoration: line-through;
-        color: white;
-        span {
-          color: lighten($main-color, 30%);
-        }
+.container {
+  max-width: $website-width;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+header {
+  background-color: $main-color;
+  border-radius: 0 0 3px 3px;
+  color: white;
+  padding: 30px 20px;
+  h1 {
+    margin: 0;
+    text-align: center;
+    i.fa {
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+    span.line-through {
+      text-decoration: line-through;
+      color: white;
+      span {
+        color: lighten($main-color, 30%);
       }
     }
   }
-  main {
-    padding: 10px;
-    padding-bottom: 50px;
-    flex: 1;
+}
+main {
+  padding: 10px;
+  padding-bottom: 50px;
+  flex: 1;
+}
+footer {
+  border: 1px solid $main-color;
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+  color: $main-color;
+  padding: 10px;
+  p {
+    text-align: center;
+    font-size: 12px;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: $website-width) {
+  header {
+    border-radius: 0;
   }
   footer {
-    border: 1px solid $main-color;
-    border-bottom: none;
-    border-radius: 3px 3px 0 0;
-    color: $main-color;
-    padding: 10px;
-    p {
-      text-align: center;
-      font-size: 12px;
-      margin: 0;
-    }
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
   }
-
 }
