@@ -1,0 +1,11 @@
+$fa-font-path: "https://netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts";
+@import "bower_components/font-awesome/scss/font-awesome";
+
+h1, h2, h3, h4, h5, h6, p, li, input {
+  font-family: Helvetica;
+  font-weight: lighter;
+}
+
+p, li {
+  line-height: 150%;
+}

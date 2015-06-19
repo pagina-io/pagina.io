@@ -1,0 +1,13 @@
+<h2>Make GitHub Pages editable <small>so your mother can do it</small></h2>
+
+<p>This is the amazing front end of the new and next tool. Download a Jekkyl template, put it in a repository, give the enduser write access to it and give the url of this app. Github Pages and we will do the rest.</p>
+
+{{#if isAuthenticated}}
+<a {{action 'logout'}} class="button" tabindex="1">
+  <i class="fa fa-sign-out"></i> Log out
+</a>
+{{else}}
+<a href="{{githubUrl}}" class="button" tabindex="1">
+  <i class="fa fa-github"></i> Connect with GitHub
+</a>
+{{/if}}

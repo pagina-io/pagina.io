@@ -12,10 +12,12 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
-
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    HOSTS: {
+      // We will put our host urls here
     }
   };
 
@@ -25,6 +27,16 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.HOSTS.api = 'http://localhost:9292';
+  }
+
+  if (environment === 'acceptance') {
+    // ENV.APP.LOG_RESOLVER = true;
+    // ENV.APP.LOG_ACTIVE_GENERATION = true;
+    // ENV.APP.LOG_TRANSITIONS = true;
+    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.HOSTS.api = 'http://api.jikkyll.fiiv.io';
   }
 
   if (environment === 'test') {
@@ -40,7 +52,17 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.HOSTS.api = 'http://api.jikkyll.fiiv.io';
+  }
 
+  ENV.contentSecurityPolicy = {
+    'default-src': "'none'",
+    'script-src': "'self'",
+    'font-src': "'self' https://netdna.bootstrapcdn.com",
+    'connect-src': "'self' " + ENV.HOSTS.api,
+    'img-src': "'self'",
+    'style-src': "'self'",
+    'media-src': "'self'"
   }
 
   return ENV;

@@ -1,6 +1,6 @@
 {
   "name": "jikkyll",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Small description for jikkyll goes here",
   "private": true,
   "directories": {
@@ -29,8 +29,9 @@
     "ember-cli-ic-ajax": "0.1.1",
     "ember-cli-inject-live-reload": "^1.3.0",
     "ember-cli-qunit": "0.3.13",
+    "ember-cli-sass": "4.0.1",
     "ember-cli-uglify": "^1.0.1",
-    "ember-data": "1.0.0-beta.18",
+    "ember-data": "1.0.0-beta.19.2",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2"
   }

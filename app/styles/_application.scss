@@ -1,0 +1,31 @@
+html, body {
+  .container {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  header {
+    background-color: #3FBD5E;
+    border-radius: 0 0 3px 3px;
+    color: white;
+    padding: 30px 20px;
+    h1 {
+      margin: 0;
+      text-align: center;
+      i.fa {
+        font-size: 50px;
+        margin-bottom: 10px;
+      }
+      span.line-through {
+        text-decoration: line-through;
+        color: white;
+        span {
+          color: lighten($main-color, 30%);
+        }
+      }
+    }
+  }
+  main {
+    padding: 10px;
+  }
+}
