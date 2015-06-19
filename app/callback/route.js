@@ -7,7 +7,7 @@ default Ember.Route.extend({
     if (!window.localStorage) {
       Ember.Logger.error('No window.localStorage available');
     }
-    if (params.status === 'success' && params.access_token) {
+    if (params.access_token) {
       window.localStorage.access_token = params.access_token;
       return this.replaceWith('index');
     }
