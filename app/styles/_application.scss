@@ -1,10 +1,12 @@
+@import "bower_components/bourbon/app/assets/stylesheets/bourbon";
+
 .container {
+  @include display('flex');
+  flex-direction: column;
+  min-height: 100vh;
   max-width: $website-width;
   margin-left: auto;
   margin-right: auto;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
 }
 header {
   background-color: $main-color;
@@ -30,7 +32,7 @@ header {
 main {
   padding: 10px;
   padding-bottom: 50px;
-  flex: 1;
+  @include flex(1);
 }
 footer {
   border: 1px solid $main-color;

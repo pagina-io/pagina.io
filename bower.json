@@ -13,6 +13,7 @@
     "loader.js": "ember-cli/loader.js#3.2.0",
     "qunit": "~1.17.1",
     "normalize.css": "~3.0.3",
-    "font-awesome": "~4.3.0"
+    "font-awesome": "~4.3.0",
+    "bourbon": "~4.2.3"
   }
 }
