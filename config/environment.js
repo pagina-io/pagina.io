@@ -15,7 +15,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
     HOSTS: {
       // We will put our host urls here
     }
