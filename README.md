@@ -4,7 +4,7 @@ This is the amazing front end of the new and next tool. Download a Jekkyl templa
 
 ## Installation
 
-* `git clone <repository-url>` this repository
+* `git clone git@github.com:mtimofiiv/jikkyll.git` this repository
 * change into the new directory
 * `npm install`
 * `bower install`
