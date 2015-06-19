@@ -12,6 +12,9 @@
   color: #fff;
   background-color: $main-color;
   border-radius: 3px;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
   &:hover {
     background-color: darken($main-color, 10%);
   }
