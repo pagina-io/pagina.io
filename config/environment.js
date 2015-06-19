@@ -27,7 +27,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.HOSTS.api = 'http://api.jikkyll.fiiv.io';
+    ENV.HOSTS.api = 'http://localhost:9292';
   }
 
   if (environment === 'acceptance') {
@@ -53,6 +53,16 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.HOSTS.api = 'http://api.jikkyll.fiiv.io';
+  }
+
+  ENV.contentSecurityPolicy = {
+    'default-src': "'none'",
+    'script-src': "'self'",
+    'font-src': "'self' https://netdna.bootstrapcdn.com",
+    'connect-src': "'self' " + ENV.HOSTS.api,
+    'img-src': "'self'",
+    'style-src': "'self'",
+    'media-src': "'self'"
   }
 
   return ENV;

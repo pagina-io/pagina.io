@@ -1,0 +1,18 @@
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 20px;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  background-color: $main-color;
+  border-radius: 3px;
+  &:hover {
+    background-color: darken($main-color, 10%);
+  }
+}
