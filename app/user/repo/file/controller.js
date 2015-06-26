@@ -6,6 +6,7 @@ export
 default Ember.Controller.extend({
 
   editing: false,
+  saving: false,
 
   completeFile: function() {
     return this.get('model.content');
@@ -41,7 +42,13 @@ default Ember.Controller.extend({
     },
 
     save: function() {
-      this.toggleProperty('editing');
+      this.set('saving', true);
+      this.get('model').save().then(function() {
+        this.set('saving', false);
+        this.toggleProperty('editing');
+      }.bind(this), function() {
+        this.set('saving', false);
+      }.bind(this));
     }
 
   }

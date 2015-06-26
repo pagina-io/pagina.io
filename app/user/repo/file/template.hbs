@@ -1,5 +1,9 @@
 {{#if editing}}
-  <a class="edit button" {{action 'save'}}>Save</a>
+  {{#if saving}}
+    <a class="edit button">Saving...</a>
+  {{else}}
+    <a class="edit button" {{action 'save'}}>Save</a>
+  {{/if}}
   <a class="edit button cancel" {{action 'cancel'}}>Cancel</a>
 {{else}}
   <a class="edit button" {{action 'edit'}}>Edit</a>
