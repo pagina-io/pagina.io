@@ -7,9 +7,13 @@ default Ember.Controller.extend({
   hasResults: false,
   repos: [],
 
+  username: function() {
+    return window.localStorage.username || false;
+  }.property(),
+
   scan: function() {
     this.set('isScanning', true);
-    this.store.find('repo').then(function(repos) {
+    this.store.find('scan').then(function(repos) {
       this.set('isScanning', false);
       this.set('repos', repos);
     }.bind(this), function() {
