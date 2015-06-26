@@ -4,4 +4,9 @@
   <h1>File {{model.filename}} <a class="button" {{action 'edit'}}>Edit</a></h1>
 {{/if}}
 
-<div class="editable">{{model.content}}</div>
+{{#if editing}}
+  {{textarea value=model.content class="editor"}}
+{{else}}
+  <div>{{{html}}}</div>
+{{/if}}
+
