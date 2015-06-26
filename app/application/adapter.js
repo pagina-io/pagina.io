@@ -32,7 +32,7 @@ default DS.ActiveModelAdapter.reopen({
       if (!hash.data) {
         hash.data = {
           access_token: accessToken
-        }
+        };
       }
       else {
         hash.data.access_token = accessToken;

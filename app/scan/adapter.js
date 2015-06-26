@@ -1,9 +1,8 @@
-import ENV from 'jikkyll/config/environment';
 import ApplicationAdapter from './../application/adapter';
 
 export
 default ApplicationAdapter.extend({
-  pathForType: function(type) {
+  pathForType: function() {
     return 'users/current/scanrepos';
   },
 });
