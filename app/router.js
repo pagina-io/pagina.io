@@ -13,7 +13,6 @@ Router.map(function() {
       path: '/:repo'
     });
   });
-
   this.route('callback');
 });
 
