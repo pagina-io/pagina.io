@@ -11,7 +11,7 @@ default DS.ActiveModelAdapter.reopen({
     var object = {
       'Access-Control-Allow-Credentials': true,
       'Accept': 'application/vnd.app+json'
-    }
+    };
     if (window.localStorage && window.localStorage.access_token) {
       object.Authorization = 'Token ' + window.localStorage.access_token;
     }
