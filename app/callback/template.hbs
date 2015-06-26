@@ -1,3 +1,7 @@
 <h2>Oeps</h2>
 
-<p>Something is wrong with the GitHub callback</p>
+{{#if hasLocalStorage}}
+  <p>Something is wrong with the GitHub callback</p>
+{{else}}
+  <p>You don't have localstorage support, maybe your cookies are disabled?</p>
+{{/if}}
