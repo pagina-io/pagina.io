@@ -1,0 +1,17 @@
+<h1>Your repo's</h1>
+
+{{#if isScanning}}
+  <p>We are scanning your repo's for the GitHub Pages branch and looking for Jekyll files inside of it.</p>
+  <p><img src="https://assets.adriaan.io/jikkyll/images/icons/loading.gif" alt="Loading..."></p>
+{{else}}
+  {{#if repos.firstObject}}
+    <p>Select the repository you want to edit like a boss</p>
+    <ul>
+      {{#each repos key='id' as |repo|}}
+        <li>{{#link-to 'user.repo' username repo.name}}{{repo.name}}{{/link-to}}</li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>We have NO results!</p>
+  {{/if}}
+{{/if}}

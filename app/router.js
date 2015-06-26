@@ -6,24 +6,14 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('repository', {
-    path: '/:username/:repository'
+  this.resource('user', {
+    path: '/:username'
   }, function() {
-    this.route('file', {
-      path: '/:file'
-    }, function() {
-      this.route('add', {
-        path: '/add'
-      });
-      this.route('edit', {
-        path: '/edit'
-      });
+    this.route('repo', {
+      path: '/:repo'
     });
   });
 
-  this.route('repository', function() {
-    this.route('file');
-  });
   this.route('callback');
 });
 

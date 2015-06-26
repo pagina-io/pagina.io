@@ -9,23 +9,33 @@ default DS.ActiveModelAdapter.reopen({
 
   headers: function() {
     var object = {
-      'Access-Control-Allow-Credentials': true,
+      // 'Access-Control-Allow-Credentials': true,
       'Accept': 'application/vnd.app+json'
-    }
+    };
     if (window.localStorage && window.localStorage.access_token) {
-      object.Authorization = 'Token ' + window.localStorage.access_token;
+      // object.Authorization = 'Token ' + window.localStorage.access_token;
     }
     return object;
   }.property().volatile(),
 
-  host: ENV.API.host,
+  host: ENV.HOSTS.api,
 
   ajax: function(url, method, hash) {
     hash = hash || {}; // hash may be undefined
     hash.crossDomain = true;
-    hash.xhrFields = {
-      withCredentials: true
-    };
+    // hash.xhrFields = {
+    //   withCredentials: true
+    // };
+    if (window.localStorage && window.localStorage.access_token) {
+      if (!hash.data) {
+        hash.data = {
+          access_token: window.localStorage.access_token
+        }
+      }
+      else {
+        hash.data.access_token = window.localStorage.access_token;
+      }
+    }
     return this._super(url, method, hash);
   },
 
