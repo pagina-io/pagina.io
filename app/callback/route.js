@@ -9,6 +9,9 @@ default Ember.Route.extend({
     }
     if (params.access_token) {
       window.localStorage.access_token = params.access_token;
+      if (params.username) {
+        return this.replaceWith('user', params.username);
+      }
       return this.replaceWith('index');
     }
   }
