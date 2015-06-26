@@ -10,6 +10,8 @@ default Ember.Route.extend({
     return this.store.find('repofile', {
       filename: params.filePath,
       repo_name: repo
+    }).then(function(repos) {
+      return repos.get('firstObject');
     });
   }
 

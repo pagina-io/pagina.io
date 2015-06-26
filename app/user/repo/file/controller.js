@@ -6,12 +6,15 @@ default Ember.Controller.extend({
   editing: false,
 
   actions: {
+
     edit: function() {
       this.toggleProperty('editing');
-      Ember.$('p').hallo({
-        editable: this.get('editing')
-      });
+    },
+
+    save: function() {
+      this.toggleProperty('editing');
     }
+
   }
 
 });

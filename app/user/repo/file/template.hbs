@@ -1,8 +1,7 @@
 {{#if editing}}
-  <h1>Editing '{{model.filename}}'</h1>
+  <h1>Editing {{model.filename}}  <a class="button" {{action 'save'}}>Save</a></h1>
 {{else}}
-  <h1>File '{{model.filename}}' <a class="button" {{action 'edit'}}>Edit</a></h1>
+  <h1>File {{model.filename}} <a class="button" {{action 'edit'}}>Edit</a></h1>
 {{/if}}
 
-<p>Wow, you are really doing it!</p>
-
+<div class="editable">{{model.content}}</div>
