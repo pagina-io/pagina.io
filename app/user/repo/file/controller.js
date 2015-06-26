@@ -7,15 +7,20 @@ default Ember.Controller.extend({
 
   editing: false,
 
-  html: function() {
-    var converter = new showdown.Converter();
-    return converter.makeHtml(this.get('model.content'));
+  completeFile: function() {
+    return this.get('model.content');
   }.property('model.content'),
+
+  html: function() {
+    var html = this.get('completeFile').split('---')[2].trim();
+    var converter = new showdown.Converter();
+    return converter.makeHtml(html);
+  }.property('completeFile'),
 
   yaml: function() {
     var header = this.get('model.content').split('---')[1].trim();
     return jsyaml.load(header);
-  }.property('model.content'),
+  }.property('completeFile'),
 
   layout: function() {
     return this.get('yaml').layout;
