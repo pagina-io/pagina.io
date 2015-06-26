@@ -8,11 +8,15 @@ default Ember.Route.extend({
       Ember.Logger.error('No window.localStorage available');
     }
     if (params.access_token) {
-      window.localStorage.access_token = params.access_token;
+      var auth = {
+        access_token: params.access_token
+      };
       if (params.username) {
-        window.localStorage.username = params.username;
+        auth.username = params.username;
+        window.localStorage.auth = JSON.stringify(auth);
         return this.replaceWith('user', params.username);
       }
+      window.localStorage.auth = JSON.stringify(auth);
       return this.replaceWith('index');
     }
   }

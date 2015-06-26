@@ -8,7 +8,7 @@ default Ember.Controller.extend({
   repos: [],
 
   username: function() {
-    return window.localStorage.username || false;
+    return JSON.parse(window.localStorage.auth).username || false;
   }.property(),
 
   scan: function() {
