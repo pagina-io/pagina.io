@@ -14,26 +14,7 @@ Router.map(function() {
     });
   });
 
-  // this.resource('repository', {
-  //   path: '/:username'
-  // }, function() {
-  //   this.route('file', {
-  //     path: '/:file'
-  //   }, function() {
-  //     this.route('add', {
-  //       path: '/add'
-  //     });
-  //     this.route('edit', {
-  //       path: '/edit'
-  //     });
-  //   });
-  // });
-
-  // this.route('repository', function() {
-  //   this.route('file');
-  // });
   this.route('callback');
-  this.route('user');
 });
 
 export
