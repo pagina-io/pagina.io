@@ -27,8 +27,13 @@ default DS.ActiveModelAdapter.reopen({
     //   withCredentials: true
     // };
     if (window.localStorage && window.localStorage.access_token) {
-      hash.data = {
-        access_token: window.localStorage.access_token
+      if (!hash.data) {
+        hash.data = {
+          access_token: window.localStorage.access_token
+        }
+      }
+      else {
+        hash.data.access_token = window.localStorage.access_token;
       }
     }
     return this._super(url, method, hash);
