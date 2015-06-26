@@ -15,7 +15,8 @@
     "font-awesome": "~4.3.0",
     "bourbon": "~4.2.3",
     "jquery": "~2.1.4",
-    "showdown": "~1.1.0"
+    "showdown": "~1.1.0",
+    "js-yaml": "~3.3.1"
   },
   "resolutions": {
     "jquery": "~2.1.4",

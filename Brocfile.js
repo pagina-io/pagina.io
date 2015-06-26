@@ -18,5 +18,6 @@ var app = new EmberApp();
 // along with the exports of each module as its value.
 
 app.import('bower_components/showdown/dist/showdown.min.js');
+app.import('bower_components/js-yaml/dist/js-yaml.min.js');
 
 module.exports = app.toTree();
