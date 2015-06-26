@@ -18,7 +18,7 @@ default DS.ActiveModelAdapter.reopen({
     return object;
   }.property().volatile(),
 
-  host: ENV.API.host,
+  host: ENV.HOSTS.api,
 
   ajax: function(url, method, hash) {
     hash = hash || {}; // hash may be undefined
