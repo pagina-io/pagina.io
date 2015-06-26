@@ -5,7 +5,7 @@ export
 default Ember.Controller.extend({
 
   username: function() {
-    return window.localStorage.username || false;
+    return JSON.parse(window.localStorage.auth).username || false;
   }.property(),
 
   isAuthenticated: function() {

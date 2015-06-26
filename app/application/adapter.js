@@ -26,14 +26,16 @@ default DS.ActiveModelAdapter.reopen({
     // hash.xhrFields = {
     //   withCredentials: true
     // };
-    if (window.localStorage && window.localStorage.access_token) {
+    if (window.localStorage && window.localStorage.auth) {
+
+      var accessToken = JSON.parse(window.localStorage.auth).access_token;
       if (!hash.data) {
         hash.data = {
-          access_token: window.localStorage.access_token
-        }
+          access_token: accessToken
+        };
       }
       else {
-        hash.data.access_token = window.localStorage.access_token;
+        hash.data.access_token = accessToken;
       }
     }
     return this._super(url, method, hash);

@@ -11,9 +11,12 @@ Router.map(function() {
   }, function() {
     this.route('repo', {
       path: '/:repo'
+    }, function() {
+      this.route('file', {
+        path: '/*filePath'
+      });
     });
   });
-
   this.route('callback');
 });
 
