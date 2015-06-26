@@ -12,7 +12,7 @@ default ApplicationSerializer.extend({
     // Check if the payload.events is an Array
     if (Object.prototype.toString.call(payload.repos) !== '[object Array]') {
       return {
-        'repos': result
+        'scans': result
       };
     }
 
@@ -21,7 +21,7 @@ default ApplicationSerializer.extend({
       result.push(el);
     });
     return {
-      'repos': result
+      'scans': result
     };
   }
 
