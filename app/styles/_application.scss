@@ -1,13 +1,44 @@
-@import "bower_components/bourbon/app/assets/stylesheets/bourbon";
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 
-.container {
-  @include display('flex');
+body {
+  min-height: 400px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
   flex-direction: column;
-  min-height: 100vh;
+
   max-width: $website-width;
   margin-left: auto;
   margin-right: auto;
 }
+.content, body > .ember-view, .ace-editor, pre {
+  background-color: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+main.content {
+  padding: 10px;
+  padding-bottom: 50px;
+}
+
 header {
   background-color: $main-color;
   border-radius: 0 0 3px 3px;
@@ -29,11 +60,7 @@ header {
     }
   }
 }
-main {
-  padding: 10px;
-  padding-bottom: 50px;
-  @include flex(1);
-}
+
 footer {
   border: 1px solid $main-color;
   border-bottom: none;
