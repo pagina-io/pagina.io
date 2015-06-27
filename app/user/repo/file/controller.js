@@ -13,21 +13,33 @@ default Ember.Controller.extend({
   }.property('model.content'),
 
   html: function() {
+    if (Ember.isEmpty(this.get('completeFile'))) {
+      return;
+    }
     var html = this.get('completeFile').split('---')[2].trim();
     var converter = new showdown.Converter();
     return converter.makeHtml(html);
   }.property('completeFile'),
 
   yaml: function() {
-    var header = this.get('model.content').split('---')[1].trim();
+    if (Ember.isEmpty(this.get('completeFile'))) {
+      return;
+    }
+    var header = this.get('completeFile').split('---')[1].trim();
     return jsyaml.load(header);
   }.property('completeFile'),
 
   layout: function() {
+    if (Ember.isEmpty(this.get('yaml'))) {
+      return;
+    }
     return this.get('yaml').layout;
   }.property('yaml'),
 
   title: function() {
+    if (Ember.isEmpty(this.get('yaml'))) {
+      return;
+    }
     return this.get('yaml').title || 'Title is not found';
   }.property('yaml'),
 
