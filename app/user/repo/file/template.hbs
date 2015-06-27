@@ -24,7 +24,7 @@
 </p>
 
 {{#if editing}}
-  {{textarea value=model.content class="editor"}}
+  {{ace-editor content=model.content}}
 {{else}}
   {{{html}}}
 {{/if}}

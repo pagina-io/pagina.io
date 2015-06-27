@@ -1,22 +1,15 @@
-textarea.editor {
-  width: 100%;
-  min-height: 500px;
-  width: 100%;
-  min-height: 500px;
-  font-family: monospace;
-  font-size: 16px;
-  line-height: 150%;
+#editor {
+  margin: 0;
 }
 
-.button.edit {
+p.actions {
   float: right;
-  margin-top: 22px;
-}
 
-.button.edit + .button.edit {
-  margin-right: 20px;
-}
+  .button + .button {
+    margin-right: 20px;
+  }
 
-.button.edit.cancel {
-  background-color: grey;
+  .button.edit.cancel {
+    background-color: grey;
+  }
 }
