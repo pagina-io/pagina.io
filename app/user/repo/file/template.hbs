@@ -1,3 +1,16 @@
+<h1>
+{{#if title}}
+  {{title}}
+{{else}}
+  {{#if model.filename}}
+    {{model.filename}}
+  {{else}}
+    Edit this file
+  {{/if}}
+{{/if}}
+</h1>
+
+<p class="actions">
 {{#if editing}}
   {{#if saving}}
     <a class="edit button">Saving...</a>
@@ -8,12 +21,7 @@
 {{else}}
   <a class="edit button" {{action 'edit'}}>Edit</a>
 {{/if}}
-
-{{#if title}}
-  <h1>{{title}}</h1>
-{{else}}
-  <h1>{{model.filename}}</h1>
-{{/if}}
+</p>
 
 {{#if editing}}
   {{textarea value=model.content class="editor"}}
