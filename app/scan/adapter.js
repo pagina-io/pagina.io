@@ -3,6 +3,7 @@ import ApplicationAdapter from './../application/adapter';
 export
 default ApplicationAdapter.extend({
   pathForType: function() {
-    return 'users/current/scanrepos';
+    return 'github/repos';
   },
 });
+
