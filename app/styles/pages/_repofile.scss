@@ -4,12 +4,9 @@
 
 p.actions {
   float: right;
-
-  .button + .button {
-    margin-right: 20px;
-  }
-
+  margin-top: 19px;
   .button.edit.cancel {
     background-color: grey;
   }
 }
+
