@@ -6,6 +6,9 @@ default Ember.Component.extend({
   classNames: ['ace-editor'],
 
   didInsertElement: function() {
+    if (!window.ace) {
+      return;
+    }
     this.editor = window.ace.edit('editor');
     this.editor.setTheme('ace/theme/monokai');
     // this.editor.getSession().setMode('ace/mode/markdown');
