@@ -2,7 +2,7 @@
 
 {{#if isScanning}}
   <p>We are scanning your repo's for the GitHub Pages branch and looking for Jekyll files inside of it.</p>
-  <p><img src="https://assets.adriaan.io/jikkyll/images/icons/loading.gif" alt="Loading..."></p>
+  {{ember-spinner lines=11 length=5 radius=8 width=3 rotate=10 speed='1.0' color="#3FBD5E"}}
 {{else}}
   {{#if repos.firstObject}}
     <p>Select the repository you want to edit like a boss</p>
