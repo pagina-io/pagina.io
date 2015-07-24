@@ -13,5 +13,13 @@ default Ember.Component.extend({
     this.editor.on('change', function() {
       this.set('content', this.editor.getValue());
     }.bind(this));
+
+    Ember.$(window).keydown(function(e) {
+      if (e.keyCode === 83 && e.metaKey) {
+        e.preventDefault();
+        return this.sendAction();
+      }
+    }.bind(this));
+
   }
 });
