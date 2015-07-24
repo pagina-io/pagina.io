@@ -1,6 +1,6 @@
 {
   "name": "jikkyll",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Small description for jikkyll goes here",
   "private": true,
   "directories": {
@@ -38,3 +38,4 @@
     "ember-moment": "3.1.0"
   }
 }
+
