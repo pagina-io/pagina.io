@@ -16,16 +16,38 @@ default Ember.Controller.extend({
     if (Ember.isEmpty(this.get('completeFile'))) {
       return;
     }
-    var html = this.get('completeFile').split('---')[2].trim();
+    var splitter = this.get('completeFile').split('---');
+    var html;
+    if (splitter.length < 3) {
+      html = this.get('completeFile');
+    }
+    else {
+      html = splitter[2].trim();
+    }
     var converter = new showdown.Converter();
     return converter.makeHtml(html);
+  }.property('completeFile'),
+
+  body: function() {
+    if (Ember.isEmpty(this.get('completeFile'))) {
+      return;
+    }
+    var splitter = this.get('completeFile').split('---');
+    if (splitter.length < 3) {
+      return this.get('completeFile');
+    }
+    return splitter[2].trim();
   }.property('completeFile'),
 
   yaml: function() {
     if (Ember.isEmpty(this.get('completeFile'))) {
       return;
     }
-    var header = this.get('completeFile').split('---')[1].trim();
+    var splitter = this.get('completeFile').split('---');
+    if (splitter.length < 3) {
+      return;
+    }
+    var header = splitter[1].trim();
     return jsyaml.load(header);
   }.property('completeFile'),
 
@@ -40,7 +62,7 @@ default Ember.Controller.extend({
     if (Ember.isEmpty(this.get('yaml'))) {
       return;
     }
-    return this.get('yaml').title || 'Title is not found';
+    return this.get('yaml').title || '[Untitled]';
   }.property('yaml'),
 
   actions: {
@@ -55,6 +77,9 @@ default Ember.Controller.extend({
 
     save: function() {
       this.set('saving', true);
+      var yaml = "---\n" + jsyaml.dump(this.get('yaml')) + "---\n";
+      var totalFile = yaml + "\n" + this.get('body');
+      this.set('model.content', totalFile);
       this.get('model').save().then(function() {
         this.set('saving', false);
         this.toggleProperty('editing');
@@ -66,3 +91,4 @@ default Ember.Controller.extend({
   }
 
 });
+
