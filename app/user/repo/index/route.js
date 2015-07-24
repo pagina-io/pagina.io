@@ -8,12 +8,13 @@ default Ember.Route.extend({
     var user = this.modelFor('user');
     var repo = transition.params['user.repo'].repo;
 
-    return this.store.createRecord('repo', {
+    return this.store.find('repo', {
       name: repo,
       userId: user.user_id
-    }).save().then(function(repo) {
-      return repo;
+    }).then(function(repo) {
+      return repo.get('firstObject');
     });
   }
 
 });
+

@@ -8,7 +8,7 @@
     <p>Select the repository you want to edit like a boss</p>
     <ul>
       {{#each repos key='id' as |repo|}}
-        <li>{{#link-to 'user.repo' username repo.name}}{{repo.name}}{{/link-to}}</li>
+        <li><a {{action 'createRepo' repo}}>{{repo.name}}</a></li>
       {{/each}}
     </ul>
   {{else}}
