@@ -18,6 +18,7 @@ default Ember.Controller.extend({
   }.property('@each.repos', 'keyword'),
 
   username: function() {
+    if (!window.localStorage.auth) return false;
     return JSON.parse(window.localStorage.auth).username || false;
   }.property(),
 
