@@ -2,15 +2,23 @@
 
 {{#if isScanning}}
   <p>We are scanning your repo's for the GitHub Pages branch and looking for Jekyll files inside of it.</p>
-  <p><img src="https://assets.adriaan.io/jikkyll/images/icons/loading.gif" alt="Loading..."></p>
+  {{ember-spinner lines=11 length=5 radius=8 width=3 rotate=10 speed='1.0' color="#3FBD5E"}}
 {{else}}
   {{#if repos.firstObject}}
-    <p>Select the repository you want to edit like a boss</p>
-    <ul>
-      {{#each repos key='id' as |repo|}}
-        <li>{{#link-to 'user.repo' username repo.name}}{{repo.name}}{{/link-to}}</li>
-      {{/each}}
-    </ul>
+    {{#if isLoading}}
+      <p>We are loading your repo, this can take a few seconds, meanwhile enjoy this gif</p>
+      <p><img src="http://media.giphy.com/media/5wWf7H0qoWaNnkZBucU/giphy.gif"></p>
+    {{else}}
+      <p>Select the repository you want to edit like a boss</p>
+      <p>{{input type="text" value=keyword}}</p>
+      <ul>
+        {{#each results key='id' as |repo|}}
+          <li>
+            <a {{action 'createRepo' repo}}>{{repo.owner}}/{{repo.name}}</a>
+          </li>
+        {{/each}}
+      </ul>
+    {{/if}}
   {{else}}
     <p>We have NO results!</p>
   {{/if}}

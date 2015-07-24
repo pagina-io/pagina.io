@@ -1,1 +1,26 @@
-<h2>Repository '{{model.name}}'</h2>
+{{#if model.repo.name}}
+  <h2>Repository {{model.repo.name}}</h2>
+
+  <h3>Blog posts</h3>
+
+  <p>{{#link-to 'user.repo.file' model.user model.repo.name 'new' class="button"}}Add a post{{/link-to}}</p>
+
+  <ol>
+    {{#each blogFiles key='id' as |repofile|}}
+      <li>{{#link-to 'user.repo.file' model.user model.repo.name repofile.filename}}{{repofile.title}}{{/link-to}}</li>
+    {{/each}}
+  </ol>
+
+  {{#if showAllFiles}}
+    <p><a {{action 'toggleAllFiles'}} class="button">Hide all files</a></p>
+    <ol>
+      {{#each model.repo.repofiles key='id' as |repofile|}}
+        <li>{{#link-to 'user.repo.file' model.user model.repo.name repofile.filename}}{{repofile.filename}}{{/link-to}}</li>
+      {{/each}}
+    </ol>
+  {{else}}
+    <p><a {{action 'toggleAllFiles'}} class="button">Show all files</a></p>
+  {{/if}}
+{{else}}
+  <h2>Repository not scanned or not found, {{#link-to 'user' model.user}}go to you list{{/link-to}}.</h2>
+{{/if}}

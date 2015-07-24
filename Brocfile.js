@@ -19,5 +19,9 @@ var app = new EmberApp();
 
 app.import('bower_components/showdown/dist/showdown.min.js');
 app.import('bower_components/js-yaml/dist/js-yaml.min.js');
+app.import('bower_components/ace-builds/src-noconflict/ace.js');
+
+app.import('bower_components/ace-builds/src-noconflict/mode-markdown.js');
+app.import('bower_components/ace-builds/src-noconflict/theme-monokai.js');
 
 module.exports = app.toTree();

@@ -1,22 +1,46 @@
-{{#if editing}}
-  {{#if saving}}
-    <a class="edit button">Saving...</a>
+<div>
+  <p class="actions">
+    {{#if isNew}}
+      {{#if saving}}
+        <a class="edit button">Saving...</a>
+      {{else}}
+        <a class="edit button" {{action 'saveNew'}}>Save</a>
+      {{/if}}
+    {{else}}
+      {{#if editing}}
+        {{#if saving}}
+          <a class="edit button">Saving...</a>
+        {{else}}
+          <a class="edit button" {{action 'save'}}>Save</a>
+        {{/if}}
+        <a class="edit button cancel" {{action 'cancel'}}>Cancel</a>
+      {{else}}
+        <a class="edit button" {{action 'edit'}}>Edit</a>
+      {{/if}}
+    {{/if}}
+  </p>
+
+  {{#if isNew}}
+    <h1>{{input type='text' value=title required="required"}}</h1>
   {{else}}
-    <a class="edit button" {{action 'save'}}>Save</a>
+    <h1>
+    {{#if title}}
+      {{title}}
+    {{else}}
+      {{#if model.filename}}
+        {{model.filename}}
+      {{else}}
+        Edit this file
+      {{/if}}
+    {{/if}}
+    </h1>
   {{/if}}
-  <a class="edit button cancel" {{action 'cancel'}}>Cancel</a>
-{{else}}
-  <a class="edit button" {{action 'edit'}}>Edit</a>
-{{/if}}
+</div>
 
-{{#if title}}
-  <h1>{{title}}</h1>
-{{else}}
-  <h1>{{model.filename}}</h1>
-{{/if}}
-
-{{#if editing}}
-  {{textarea value=model.content class="editor"}}
+{{#if isNew}}
+  {{ace-editor content=body action='saveNew'}}
+{{else if editing}}
+  {{ace-editor content=body action='save'}}
 {{else}}
   {{{html}}}
 {{/if}}
