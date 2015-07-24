@@ -1,0 +1,17 @@
+<div>
+  <p class="actions">
+    {{#if saving}}
+      <a class="edit button">Saving...</a>
+    {{else}}
+      <a class="edit button" {{action 'save'}}>Save</a>
+    {{/if}}
+  </p>
+
+  <h1>{{input type="text" value=title}}</h1>
+</div>
+
+{{#if editing}}
+  {{ace-editor content=body action='save'}}
+{{else}}
+  {{{html}}}
+{{/if}}

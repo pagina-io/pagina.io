@@ -3,7 +3,7 @@
 
   <h3>Blog posts</h3>
 
-  <p><a {{action 'createPost'}} class="button">Add a post</a></p>
+  <p>{{#link-to 'user.repo.file' model.user model.repo.name 'new' class="button"}}Add a post{{/link-to}}</p>
 
   <ol>
     {{#each blogFiles key='id' as |repofile|}}

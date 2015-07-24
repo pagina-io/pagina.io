@@ -1,6 +1,10 @@
 /* globals showdown, jsyaml */
 
 import Ember from 'ember';
+import moment from 'moment';
+
+var dasherize = Ember.String.dasherize;
+var decamelize = Ember.String.decamelize;
 
 export
 default Ember.Controller.extend({
@@ -75,9 +79,38 @@ default Ember.Controller.extend({
       this.toggleProperty('editing');
     },
 
-    save: function() {
+    saveNew: function() {
       this.set('saving', true);
-      var yaml = "---\n" + jsyaml.dump(this.get('yaml')) + "---\n";
+      var yaml = "---\n" + jsyaml.dump({
+        title: this.get('title')
+      }) + "---\n";
+      var body = this.get('body') || '';
+      var totalFile = yaml + "\n" + body;
+      var filename = moment().format("YYYY-MM-DD") + '-' + this.get('title');
+      filename = filename.replace(/[^a-zA-Z0-9- ]/gi, '').decamelize().dasherize() + '.md';
+      filename = '_posts/' + filename;
+      this.store.find('repo', {
+        name: 'demaandvanadriaan',
+        userId: 7
+      }).then(function(repo) {
+        this.store.createRecord('repofile', {
+          content: totalFile,
+          filename: filename,
+          repo: repo.get('firstObject')
+        }).save().then(function() {
+          this.set('saving', false);
+        }.bind(this));
+      }.bind(this));
+    },
+
+    save: function() {
+      var yaml;
+      if (this.get('yaml')) {
+        yaml = "---\n" + jsyaml.dump(this.get('yaml')) + "---\n";
+      }
+      else {
+        yaml = "---\n---\n";
+      }
       var totalFile = yaml + "\n" + this.get('body');
       this.set('model.content', totalFile);
       this.get('model').save().then(function() {
