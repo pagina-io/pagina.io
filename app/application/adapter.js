@@ -27,7 +27,6 @@ default DS.ActiveModelAdapter.reopen({
     //   withCredentials: true
     // };
     if (window.localStorage && window.localStorage.auth) {
-
       var accessToken = JSON.parse(window.localStorage.auth).access_token;
       if (!hash.data) {
         hash.data = {
@@ -47,3 +46,4 @@ default DS.ActiveModelAdapter.reopen({
   }
 
 });
+
