@@ -4,8 +4,18 @@ export
 default Ember.Controller.extend({
 
   isScanning: false,
+  isLoading: false,
   hasResults: false,
   repos: [],
+
+  results: function() {
+    var searchTerm = this.get('keyword');
+    var regExp = new RegExp(searchTerm, 'i');
+    var filteredResults = this.get('repos').filter(function(repos) {
+      return regExp.test(repos.get('owner') + '/' + repos.get('name'));
+    });
+    return filteredResults;
+  }.property('@each.repos', 'keyword'),
 
   username: function() {
     return JSON.parse(window.localStorage.auth).username || false;
@@ -19,6 +29,24 @@ default Ember.Controller.extend({
     }.bind(this), function() {
       this.set('isScanning', false);
     }.bind(this));
-  }.on('init')
+  }.on('init'),
+
+  actions: {
+
+    createRepo: function(repo) {
+      this.set('isLoading', true);
+      var user = this.get('model');
+      this.store.createRecord('repo', {
+        owner: repo.get('owner'),
+        name: repo.get('name'),
+        userId: user.user_id
+      }).save().then(function(newRepo) {
+        this.set('isLoading', false);
+        this.transitionTo('user.repo', newRepo.get('name'));
+      }.bind(this));
+    }
+
+  }
 
 });
+
