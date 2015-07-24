@@ -102,6 +102,7 @@ default Ember.Controller.extend({
           repo: repo.get('firstObject')
         }).save().then(function() {
           this.set('saving', false);
+          this.transitionTo('user.repo.file', filename)
         }.bind(this));
       }.bind(this));
     },
