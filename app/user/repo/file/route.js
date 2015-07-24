@@ -4,8 +4,11 @@ export
 default Ember.Route.extend({
 
   isNew: false,
+  repo: null,
 
   model: function(params, transition) {
+
+    this.set('repo', transition.params['user.repo'].repo);
 
     if (params.filePath === 'new') {
       this.set('isNew', true);
@@ -28,6 +31,7 @@ default Ember.Route.extend({
   setupController: function(controller, model) {
     this._super(controller, model);
     controller.set('isNew', this.get('isNew'));
+    controller.set('repo', this.get('repo'));
   }
 
 });

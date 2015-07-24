@@ -89,9 +89,12 @@ default Ember.Controller.extend({
       var filename = moment().format("YYYY-MM-DD") + '-' + this.get('title');
       filename = filename.replace(/[^a-zA-Z0-9- ]/gi, '').decamelize().dasherize() + '.md';
       filename = '_posts/' + filename;
+
+      var userId = JSON.parse(window.localStorage.auth).user_id;
+
       this.store.find('repo', {
-        name: 'demaandvanadriaan',
-        userId: 7
+        name: this.get('repo'),
+        userId: userId
       }).then(function(repo) {
         this.store.createRecord('repofile', {
           content: totalFile,
