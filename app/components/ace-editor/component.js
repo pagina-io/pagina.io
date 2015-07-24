@@ -12,6 +12,7 @@ default Ember.Component.extend({
     this.editor = window.ace.edit('editor');
     this.editor.setTheme('ace/theme/monokai');
     // this.editor.getSession().setMode('ace/mode/markdown');
+    this.editor.getSession().setUseWrapMode(true);
     this.editor.getSession().setValue(this.get('content'));
     this.editor.on('change', function() {
       this.set('content', this.editor.getValue());
