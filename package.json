@@ -1,7 +1,7 @@
 {
-  "name": "jikkyll",
+  "name": "jekyllo",
   "version": "0.0.5",
-  "description": "Small description for jikkyll goes here",
+  "description": "Jekyllo is a nice editor for Jekyll sites hosted on Github Pages. You can use it to edit your pages using a pleasant WYSIWYG interface",
   "private": true,
   "directories": {
     "doc": "doc",
@@ -38,4 +38,3 @@
     "ember-moment": "3.1.0"
   }
 }
-

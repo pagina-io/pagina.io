@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'jikkyll',
+    modulePrefix: 'jekyllo',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -26,11 +26,11 @@ module.exports = function(environment) {
   }
 
   if (environment === 'acceptance') {
-    ENV.HOSTS.api = 'http://api.jikkyll.fiiv.io';
+    ENV.HOSTS.api = 'https://jikkyll.fiiv.io';
   }
 
   if (environment === 'production') {
-    ENV.HOSTS.api = 'http://api.jikkyll.fiiv.io';
+    ENV.HOSTS.api = 'https://jikkyll.fiiv.io';
   }
 
   ENV.contentSecurityPolicy = {
@@ -45,4 +45,3 @@ module.exports = function(environment) {
 
   return ENV;
 };
-

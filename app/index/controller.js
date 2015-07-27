@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import ENV from 'jikkyll/config/environment';
+import ENV from 'jekyllo/config/environment';
 
 export
 default Ember.Controller.extend({
@@ -18,4 +18,3 @@ default Ember.Controller.extend({
   }.property()
 
 });
-

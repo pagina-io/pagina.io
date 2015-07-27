@@ -1,4 +1,4 @@
-import ENV from 'jikkyll/config/environment';
+import ENV from 'jekyllo/config/environment';
 import Ember from 'ember';
 import DS from 'ember-data';
 
@@ -32,8 +32,7 @@ default DS.ActiveModelAdapter.reopen({
         hash.data = {
           access_token: accessToken
         };
-      }
-      else {
+      } else {
         hash.data.access_token = accessToken;
       }
     }
@@ -46,4 +45,3 @@ default DS.ActiveModelAdapter.reopen({
   }
 
 });
-
