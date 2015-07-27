@@ -1,10 +1,13 @@
 import Ember from 'ember';
-import ENV from 'jikkyll/config/environment';
+import ENV from 'jekyllo/config/environment';
 
 export
 default Ember.Controller.extend({
 
   username: function() {
+    if (!window.localStorage.auth) {
+      return false;
+    }
     return JSON.parse(window.localStorage.auth).username || false;
   }.property(),
 

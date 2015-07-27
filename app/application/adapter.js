@@ -1,4 +1,4 @@
-import ENV from 'jikkyll/config/environment';
+import ENV from 'jekyllo/config/environment';
 import Ember from 'ember';
 import DS from 'ember-data';
 
@@ -27,14 +27,12 @@ default DS.ActiveModelAdapter.reopen({
     //   withCredentials: true
     // };
     if (window.localStorage && window.localStorage.auth) {
-
       var accessToken = JSON.parse(window.localStorage.auth).access_token;
       if (!hash.data) {
         hash.data = {
           access_token: accessToken
         };
-      }
-      else {
+      } else {
         hash.data.access_token = accessToken;
       }
     }

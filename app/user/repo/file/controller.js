@@ -1,4 +1,5 @@
 /* globals showdown, jsyaml */
+/* exported dasherize, decamelize */
 
 import Ember from 'ember';
 import moment from 'moment';
@@ -24,8 +25,7 @@ default Ember.Controller.extend({
     var html;
     if (splitter.length < 3) {
       html = this.get('completeFile');
-    }
-    else {
+    } else {
       html = splitter[2].trim();
     }
     var converter = new showdown.Converter();
@@ -102,7 +102,7 @@ default Ember.Controller.extend({
           repo: repo.get('firstObject')
         }).save().then(function() {
           this.set('saving', false);
-          this.transitionTo('user.repo.file', filename)
+          this.transitionTo('user.repo.file', filename);
         }.bind(this));
       }.bind(this));
     },
@@ -111,8 +111,7 @@ default Ember.Controller.extend({
       var yaml;
       if (this.get('yaml')) {
         yaml = "---\n" + jsyaml.dump(this.get('yaml')) + "---\n";
-      }
-      else {
+      } else {
         yaml = "---\n---\n";
       }
       var totalFile = yaml + "\n" + this.get('body');
@@ -128,4 +127,3 @@ default Ember.Controller.extend({
   }
 
 });
-
