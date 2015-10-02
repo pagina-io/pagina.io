@@ -1,4 +1,4 @@
-# Jekyllo 0.0.7
+# Jekyllo 0.0.8
 
 This is the amazing front end of the new and next tool. Download a Jekyll template, put it in a repository, give the enduser write access to it and give him the url of this app. Github Pages and we will do the rest.
 
