@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -18,7 +19,10 @@ body {
   margin-right: auto;
 }
 
-.content, body > .ember-view, .ace-editor, pre {
+.content,
+body > .ember-view,
+.ace-editor,
+pre {
   background-color: flex;
   display: -webkit-box;
   display: -moz-box;
@@ -81,4 +85,3 @@ footer {
 a {
   cursor: pointer;
 }
-
