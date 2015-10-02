@@ -4,10 +4,9 @@ This is the amazing front end of the new and next tool. Download a Jekyll templa
 
 ## Installation
 
-* `git clone git@github.com:mtimofiiv/jekyllo.git` this repository
+* `git clone git@github.com:pagina-io/pagina.io.git` this repository
 * change into the new directory
-* `npm install`
-* `bower install`
+* `npm install && bower install`
 
 ## Running / Development
 
