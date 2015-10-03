@@ -1,7 +1,7 @@
 {
-  "name": "jekyllo",
+  "name": "pagina",
   "version": "0.0.8",
-  "description": "Jekyllo is a nice editor for Jekyll sites hosted on Github Pages. You can use it to edit your pages using a pleasant WYSIWYG interface",
+  "description": "Pagina is a nice editor for Jekyll sites hosted on Github Pages. You can use it to edit your pages using a pleasant WYSIWYG interface",
   "private": true,
   "directories": {
     "doc": "doc",
