@@ -11,7 +11,7 @@ This is the amazing front end of the new and next tool. Download a Jekyll templa
 ## Running / Development
 
 * `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+* Visit the app at [http://localhost:4200](http://localhost:4200).
 
 ### Building
 
