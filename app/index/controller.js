@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import ENV from 'jekyllo/config/environment';
+import ENV from 'pagina/config/environment';
 
 export
 default Ember.Controller.extend({

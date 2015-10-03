@@ -1,4 +1,4 @@
-import ENV from 'jekyllo/config/environment';
+import ENV from 'pagina/config/environment';
 import Ember from 'ember';
 import DS from 'ember-data';
 

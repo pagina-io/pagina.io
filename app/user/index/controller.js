@@ -7,6 +7,7 @@ default Ember.Controller.extend({
   isLoading: false,
   hasResults: false,
   repos: [],
+  error: null,
 
   results: function() {
     var searchTerm = this.get('keyword');
@@ -31,6 +32,11 @@ default Ember.Controller.extend({
       this.set('repos', repos);
     }.bind(this), function() {
       this.set('isScanning', false);
+    }.bind(this), function(error) {
+      this.set('isScanning', false);
+      if (error.message) {
+        this.set('error', error.message);
+      }
     }.bind(this));
   }.on('init'),
 

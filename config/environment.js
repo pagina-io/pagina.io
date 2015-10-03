@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'jekyllo',
+    modulePrefix: 'pagina',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -22,15 +22,15 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    ENV.HOSTS.api = 'http://localhost:9292';
+    ENV.HOSTS.api = 'https://api.pagina.io';
   }
 
   if (environment === 'acceptance') {
-    ENV.HOSTS.api = 'https://jikkyll.fiiv.io';
+    ENV.HOSTS.api = 'https://api.pagina.io';
   }
 
   if (environment === 'production') {
-    ENV.HOSTS.api = 'https://jikkyll.fiiv.io';
+    ENV.HOSTS.api = 'https://api.pagina.io';
   }
 
   ENV.contentSecurityPolicy = {
@@ -38,7 +38,7 @@ module.exports = function(environment) {
     'script-src': "'self'",
     'font-src': "'self' https://netdna.bootstrapcdn.com",
     'connect-src': "'self' " + ENV.HOSTS.api,
-    'img-src': "'self'",
+    'img-src': "'self' https://assets.pagina.io",
     'style-src': "'self'",
     'media-src': "'self'"
   }
