@@ -3,20 +3,27 @@ import Ember from 'ember';
 export
 default Ember.Controller.extend({
 
-  isScanning: false,
   isLoading: false,
-  hasResults: false,
-  repos: [],
-  error: null,
+  timeout: undefined,
+  results: [],
 
-  results: function() {
-    var searchTerm = this.get('keyword');
-    var regExp = new RegExp(searchTerm, 'i');
-    var filteredResults = this.get('repos').filter(function(repos) {
-      return regExp.test(repos.get('owner') + '/' + repos.get('name'));
-    });
-    return filteredResults;
-  }.property('@each.repos', 'keyword'),
+  findResults: function() {
+    let timeout = this.get('timeout');
+
+    window.clearTimeout(timeout);
+
+    timeout = window.setTimeout(() => {
+      const keyword = this.get('keyword');
+      return this.store.query('repo-search', {
+        repo_name: keyword
+      }).then((repos) => {
+        this.set('results', repos);
+      })
+    }, 200);
+
+    this.set('timeout', timeout);
+
+  }.observes('keyword'),
 
   username: function() {
     if (!window.localStorage.auth) {
@@ -25,23 +32,7 @@ default Ember.Controller.extend({
     return JSON.parse(window.localStorage.auth).username || false;
   }.property(),
 
-  scan: function() {
-    this.set('isScanning', true);
-    this.store.findAll('scan').then(function(repos) {
-      this.set('isScanning', false);
-      this.set('repos', repos);
-    }.bind(this), function() {
-      this.set('isScanning', false);
-    }.bind(this), function(error) {
-      this.set('isScanning', false);
-      if (error.message) {
-        this.set('error', error.message);
-      }
-    }.bind(this));
-  }.on('init'),
-
   actions: {
-
     createRepo: function(repo) {
       this.set('isLoading', true);
       var user = this.get('model');
@@ -51,10 +42,9 @@ default Ember.Controller.extend({
         userId: user.user_id
       }).save().then(function(newRepo) {
         this.set('isLoading', false);
-        this.transitionTo('user.repo', newRepo.get('name'));
+        this.transitionToRoute('user.repo', newRepo.get('name'));
       }.bind(this));
     }
-
   }
 
 });

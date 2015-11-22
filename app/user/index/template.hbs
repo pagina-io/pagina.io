@@ -1,28 +1,11 @@
 <h1>Your repo's</h1>
 
-{{#if isScanning}}
-  <p>We are scanning your repo's for the GitHub Pages branch <em>(gh-pages)</em> and looking for Jekyll files inside of it.</p>
-  {{ember-spinner lines=11 length=5 radius=8 width=3 rotate=10 speed='1.0' color="#3FBD5E"}}
-{{else}}
-  {{#if repos.firstObject}}
-    {{#if isLoading}}
-      <p>We are loading your repo, this can take a few seconds, meanwhile enjoy this gif</p>
-      <p><img src="https://assets.pagina.io/images/dude-waiting.gif"></p>
-    {{else}}
-      {{#if error}}
-        <p class="error">{{error}}</p>
-      {{/if}}
-      <p>Select the repository you want to edit like a boss</p>
-      <p>{{input type="text" value=keyword}}</p>
-      <ul>
-        {{#each results key='id' as |repo|}}
-          <li>
-            <a {{action 'createRepo' repo}}>{{repo.owner}}/{{repo.name}}</a>
-          </li>
-        {{/each}}
-      </ul>
-    {{/if}}
-  {{else}}
-    <p>We have NO results!</p>
-  {{/if}}
+{{input type="text" value=keyword}}
+
+{{#if results}}
+  <ul>
+    {{#each results key='id' as |repo|}}
+      <li><a {{action 'createRepo' repo}}>{{repo.owner}}/{{repo.name}}</a></li>
+    {{/each}}
+  </ul>
 {{/if}}

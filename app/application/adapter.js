@@ -7,14 +7,9 @@ default ActiveModelAdapter.reopen({
   coalesceFindRequests: true,
 
   headers: function() {
-    var object = {
-      // 'Access-Control-Allow-Credentials': true,
+    return {
       'Accept': 'application/vnd.app+json'
     };
-    if (window.localStorage && window.localStorage.access_token) {
-      // object.Authorization = 'Token ' + window.localStorage.access_token;
-    }
-    return object;
   }.property().volatile(),
 
   host: ENV.HOSTS.api,
@@ -22,9 +17,6 @@ default ActiveModelAdapter.reopen({
   ajax: function(url, method, hash) {
     hash = hash || {}; // hash may be undefined
     hash.crossDomain = true;
-    // hash.xhrFields = {
-    //   withCredentials: true
-    // };
     if (window.localStorage && window.localStorage.auth) {
       var accessToken = JSON.parse(window.localStorage.auth).access_token;
       if (!hash.data) {
