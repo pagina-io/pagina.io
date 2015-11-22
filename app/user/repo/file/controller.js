@@ -92,7 +92,7 @@ default Ember.Controller.extend({
 
       var userId = JSON.parse(window.localStorage.auth).user_id;
 
-      this.store.findRecord('repo', {
+      this.store.queryRecord('repo', {
         name: this.get('repo'),
         userId: userId
       }).then(function(repo) {

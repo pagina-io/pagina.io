@@ -8,7 +8,7 @@ default Ember.Route.extend({
     var user = this.modelFor('user');
     var repo = transition.params['user.repo'].repo;
 
-    var repoStore = this.store.findRecord('repo', {
+    var repoStore = this.store.queryRecord('repo', {
       name: repo,
       userId: user.user_id
     }).then(function(repo) {

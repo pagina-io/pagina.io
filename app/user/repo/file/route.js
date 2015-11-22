@@ -16,7 +16,7 @@ default Ember.Route.extend({
     }
 
     var repo = transition.params['user.repo'].repo;
-    return this.store.findRecord('repofile', {
+    return this.store.queryRecord('repofile', {
       filename: params.filePath,
       repo_name: repo
     }).then(function(file) {
