@@ -16,15 +16,15 @@ default Ember.Route.extend({
     }
 
     var repo = transition.params['user.repo'].repo;
-    return this.store.find('repofile', {
+    return this.store.queryRecord('repofile', {
       filename: params.filePath,
       repo_name: repo
-    }).then(function(files) {
-      if (Ember.isEmpty(files.get('firstObject.id'))) {
+    }).then(function(file) {
+      if (Ember.isEmpty(file.get('id'))) {
         return;
       }
-      this.store.unloadRecord(files.get('firstObject'));
-      return this.store.find('repofile', files.get('firstObject.id'));
+      this.store.unloadRecord(file);
+      return this.store.findRecord('repofile', file.get('id'));
     }.bind(this));
   },
 
@@ -35,4 +35,3 @@ default Ember.Route.extend({
   }
 
 });
-

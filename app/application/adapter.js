@@ -1,21 +1,15 @@
 import ENV from 'pagina/config/environment';
-import Ember from 'ember';
-import DS from 'ember-data';
+import ActiveModelAdapter from 'active-model-adapter';
 
 export
-default DS.ActiveModelAdapter.reopen({
+default ActiveModelAdapter.reopen({
 
   coalesceFindRequests: true,
 
   headers: function() {
-    var object = {
-      // 'Access-Control-Allow-Credentials': true,
+    return {
       'Accept': 'application/vnd.app+json'
     };
-    if (window.localStorage && window.localStorage.access_token) {
-      // object.Authorization = 'Token ' + window.localStorage.access_token;
-    }
-    return object;
   }.property().volatile(),
 
   host: ENV.HOSTS.api,
@@ -23,9 +17,6 @@ default DS.ActiveModelAdapter.reopen({
   ajax: function(url, method, hash) {
     hash = hash || {}; // hash may be undefined
     hash.crossDomain = true;
-    // hash.xhrFields = {
-    //   withCredentials: true
-    // };
     if (window.localStorage && window.localStorage.auth) {
       var accessToken = JSON.parse(window.localStorage.auth).access_token;
       if (!hash.data) {
@@ -37,11 +28,6 @@ default DS.ActiveModelAdapter.reopen({
       }
     }
     return this._super(url, method, hash);
-  },
-
-  ajaxError: function(jqXHR) {
-    Ember.Logger.error('Ajax error, jqXHR:', JSON.stringify(jqXHR));
-    return this._super(jqXHR);
   }
 
 });

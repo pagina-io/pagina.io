@@ -34,13 +34,13 @@ module.exports = function(environment) {
   }
 
   ENV.contentSecurityPolicy = {
-    'default-src': "'none'",
-    'script-src': "'self'",
-    'font-src': "'self' https://netdna.bootstrapcdn.com",
-    'connect-src': "'self' " + ENV.HOSTS.api,
-    'img-src': "'self' https://assets.pagina.io",
-    'style-src': "'self'",
-    'media-src': "'self'"
+    'default-src': "*",
+    'script-src': "*",
+    'font-src': "* https://netdna.bootstrapcdn.com",
+    'connect-src': "* " + ENV.HOSTS.api,
+    'img-src': "*",
+    'style-src': "* 'unsafe-inline'",
+    'media-src': "*"
   }
 
   return ENV;

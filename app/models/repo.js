@@ -9,4 +9,3 @@ default DS.Model.extend({
     embedded: 'always'
   })
 });
-
