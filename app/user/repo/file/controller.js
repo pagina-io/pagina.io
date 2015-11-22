@@ -92,14 +92,14 @@ default Ember.Controller.extend({
 
       var userId = JSON.parse(window.localStorage.auth).user_id;
 
-      this.store.find('repo', {
+      this.store.findRecord('repo', {
         name: this.get('repo'),
         userId: userId
       }).then(function(repo) {
         this.store.createRecord('repofile', {
           content: totalFile,
           filename: filename,
-          repo: repo.get('firstObject')
+          repo: repo
         }).save().then(function() {
           this.set('saving', false);
           this.transitionTo('user.repo.file', filename);

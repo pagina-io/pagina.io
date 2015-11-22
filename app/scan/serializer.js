@@ -3,7 +3,7 @@ import ApplicationSerializer from './../application/serializer';
 export
 default ApplicationSerializer.extend({
 
-  normalizePayload: function(payload) {
+  normalizeResponse: function(store, primaryModelClass, payload) {
 
     var result = [];
 

@@ -8,11 +8,11 @@ default Ember.Route.extend({
     var user = this.modelFor('user');
     var repo = transition.params['user.repo'].repo;
 
-    var repoStore = this.store.find('repo', {
+    var repoStore = this.store.findRecord('repo', {
       name: repo,
       userId: user.user_id
     }).then(function(repo) {
-      return repo.get('firstObject');
+      return repo;
     });
 
     return Ember.RSVP.hash({

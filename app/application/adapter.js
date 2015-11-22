@@ -1,5 +1,4 @@
 import ENV from 'pagina/config/environment';
-import Ember from 'ember';
 import DS from 'ember-data';
 
 export
@@ -37,11 +36,6 @@ default DS.ActiveModelAdapter.reopen({
       }
     }
     return this._super(url, method, hash);
-  },
-
-  ajaxError: function(jqXHR) {
-    Ember.Logger.error('Ajax error, jqXHR:', JSON.stringify(jqXHR));
-    return this._super(jqXHR);
   }
 
 });

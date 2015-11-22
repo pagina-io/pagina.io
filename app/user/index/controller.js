@@ -27,7 +27,7 @@ default Ember.Controller.extend({
 
   scan: function() {
     this.set('isScanning', true);
-    this.store.find('scan').then(function(repos) {
+    this.store.findAll('scan').then(function(repos) {
       this.set('isScanning', false);
       this.set('repos', repos);
     }.bind(this), function() {
