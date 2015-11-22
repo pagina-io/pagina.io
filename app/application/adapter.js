@@ -1,8 +1,8 @@
 import ENV from 'pagina/config/environment';
-import DS from 'ember-data';
+import ActiveModelAdapter from 'active-model-adapter';
 
 export
-default DS.ActiveModelAdapter.reopen({
+default ActiveModelAdapter.reopen({
 
   coalesceFindRequests: true,
 
