@@ -40,7 +40,8 @@
 {{#if isNew}}
   {{ace-editor content=body action='saveNew'}}
 {{else if editing}}
-  {{ace-editor content=body action='save'}}
+  {{!-- {{ace-editor content=body action='save'}} --}}
+  {{medium-content-editable value=body options=mediumEditorOptions}}
 {{else}}
   {{{html}}}
 {{/if}}

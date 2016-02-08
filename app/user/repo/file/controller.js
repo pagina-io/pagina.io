@@ -3,6 +3,10 @@
 
 import Ember from 'ember';
 import moment from 'moment';
+import markdown from 'npm:markdown';
+import toMarkdown from 'npm:to-markdown';
+
+const Markdown = markdown.markdown;
 
 var dasherize = Ember.String.dasherize;
 var decamelize = Ember.String.decamelize;
@@ -12,6 +16,18 @@ default Ember.Controller.extend({
 
   editing: false,
   saving: false,
+
+  runOnInit: function() {
+    // console.log(Markdown);
+    // Use double markdown here because ember-browserify does not support names imports
+    const html = Markdown.toHTML(
+      `Hello.\n\n* This is *markdown*.
+* It is fun
+* <em>Love</em> it or leave it.
+
+<script type="text/javascript">alert('tada');</script>`);
+    console.log(toMarkdown(html, { gfm: true }));
+  }.on('init'),
 
   completeFile: function() {
     return this.get('model.content');
